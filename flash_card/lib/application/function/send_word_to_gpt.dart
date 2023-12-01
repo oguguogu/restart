@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:flash_card/secret.dart';
 import 'package:flash_card/presentation/provider/provider_flash.dart';
-// import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> sendWordToGPT(BuildContext context, WidgetRef ref,
     TextEditingController controller) async {
@@ -17,7 +17,7 @@ Future<void> sendWordToGPT(BuildContext context, WidgetRef ref,
 
   // if (data.isEmpty) {
   try {
-    ref.read(supabaseExistedProvider.notifier).state = false;
+    // ref.read(supabaseExistedProvider.notifier).state = false;
     final response = await http
         .post(
           Uri.parse('https://api.openai.com/v1/chat/completions'),

@@ -1,5 +1,4 @@
 import 'package:flash_card/domain/models/word.dart';
-import 'package:flash_card/infrastructure/database/database_books.dart';
 import 'package:flash_card/infrastructure/database/sqflite_db.dart';
 import 'package:flash_card/presentation/widgets/common/alert_dialog/single_button_dialog.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flash_card/presentation/provider/provider_flash.dart';
 import 'package:flash_card/presentation/widgets/in_flashcard/cards/card_input.dart';
 import 'package:flash_card/presentation/widgets/in_flashcard/cards/card_result.dart';
-// import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class NewInput extends HookConsumerWidget {
   const NewInput({super.key});
@@ -23,7 +22,7 @@ class NewInput extends HookConsumerWidget {
     final errorGpt = ref.watch(errorGptProvider);
     var inputTextController = ref.watch(inputTextControllerProvider);
     final carouselController = ref.watch(jumpCarouselControllerProvider);
-    final supabaseExisted = ref.watch(supabaseExistedProvider);
+    // final supabaseExisted = ref.watch(supabaseExistedProvider);
     final repeatAnimationController = useAnimationController(
       duration: const Duration(milliseconds: 150),
     );

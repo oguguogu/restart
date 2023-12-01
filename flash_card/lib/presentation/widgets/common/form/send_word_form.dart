@@ -1,11 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flash_card/infrastructure/database/sqflite_db.dart';
 import 'package:flash_card/presentation/widgets/common/alert_dialog/horizon_buttons_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flash_card/presentation/provider/provider_flash.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flash_card/application/function/send_word_to_gpt.dart';
-import 'package:flash_card/infrastructure/database/database_books.dart';
 
 class SendWordForm extends HookConsumerWidget {
   const SendWordForm({super.key, required this.carouselController});
@@ -115,35 +115,35 @@ class SendWordForm extends HookConsumerWidget {
               }
 
               final word = inputTextController.text;
-              // final wordAlreadyExists = await MyBookDatabase().wordExists(word);
+              final wordAlreadyExists = await wordExistsSqflite(word);
 
-              // if (wordAlreadyExists) {
-              //   // HorizonButtonsDialogを使用して確認ダイアログを表示
-              //   // ignore: use_build_context_synchronously
-              //   final proceed = await showDialog<bool>(
-              //     context: context,
-              //     builder: (BuildContext context) {
-              //       return HorizonButtonsDialog(
-              //           "確認",
-              //           "$word は既にデータベースに存在します。それでも続けますか？",
-              //           "はい",
-              //           "いいえ",
-              //           () {},
-              //           () {});
-              //     },
-              //   );
+              if (wordAlreadyExists) {
+                // HorizonButtonsDialogを使用して確認ダイアログを表示
+                // ignore: use_build_context_synchronously
+                final proceed = await showDialog<bool>(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return HorizonButtonsDialog(
+                        "確認",
+                        "$word は既にデータベースに存在します。それでも続けますか？",
+                        "はい",
+                        "いいえ",
+                        () {},
+                        () {});
+                  },
+                );
 
-              //   // ダイアログの結果に基づいて処理を続行
-              //   if (proceed == true) {
-              //     ref.read(waitingGptProvider.notifier).state = true;
-              //     // ignore: use_build_context_synchronously
-              //     sendWordToGPT(context, ref, inputTextController);
-              //   }
-              // } else {
-              ref.read(waitingGptProvider.notifier).state = true;
-              // ignore: use_build_context_synchronously
-              sendWordToGPT(context, ref, inputTextController);
-              // }
+                // ダイアログの結果に基づいて処理を続行
+                if (proceed == true) {
+                  ref.read(waitingGptProvider.notifier).state = true;
+                  // ignore: use_build_context_synchronously
+                  sendWordToGPT(context, ref, inputTextController);
+                }
+              } else {
+                ref.read(waitingGptProvider.notifier).state = true;
+                // ignore: use_build_context_synchronously
+                sendWordToGPT(context, ref, inputTextController);
+              }
             },
             child: const Text('覚える'),
           ),

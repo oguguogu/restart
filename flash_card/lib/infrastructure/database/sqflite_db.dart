@@ -97,3 +97,17 @@ Future<List<Map<String, dynamic>>> getAllDatabaseEntries() async {
       await db.query('sample'); // テーブル名を'sample'に設定
   return maps;
 }
+
+Future<bool> wordExistsSqflite(String word) async {
+  final db = await openMyDatabase(); // 既存のデータベース接続を使用
+
+  // 'sample' テーブルから指定された単語を検索
+  final List<Map<String, dynamic>> queryResult = await db.query(
+    'sample',
+    where: 'word = ?',
+    whereArgs: [word],
+  );
+
+  // 検索結果が空でない場合、単語が存在する
+  return queryResult.isNotEmpty;
+}
