@@ -258,7 +258,7 @@ packages:
     source: hosted
     version: "1.1.0"
   drift:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: drift
       sha256: d542088d353585a252f015b81c1e7603c57c996ba59a80d53a3f4644cc47f543
@@ -598,7 +598,7 @@ packages:
     source: hosted
     version: "1.8.3"
   path_provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path_provider
       sha256: a1aa8aaa2542a6bc57e381f132af822420216c80d4781f7aa085ca3229208aaa
@@ -890,6 +890,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.0"
+  sqflite:
+    dependency: "direct main"
+    description:
+      name: sqflite
+      sha256: "591f1602816e9c31377d5f008c2d9ef7b8aca8941c3f89cc5fd9d84da0c38a9a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
+  sqflite_common:
+    dependency: transitive
+    description:
+      name: sqflite_common
+      sha256: bb4738f15b23352822f4c42a531677e5c6f522e079461fd240ead29d8d8a54a6
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.0+2"
+  sqflite_common_ffi:
+    dependency: "direct main"
+    description:
+      name: sqflite_common_ffi
+      sha256: "35d2fce1e971707c227cc4775cc017d5eafe06c2654c3435ebd5c3ad6c170f5f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0+4"
   sqlite3:
     dependency: transitive
     description:
@@ -898,14 +922,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
-  sqlite3_flutter_libs:
-    dependency: "direct main"
-    description:
-      name: sqlite3_flutter_libs
-      sha256: "3e3583b77cf888a68eae2e49ee4f025f66b86623ef0d83c297c8d903daa14871"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.5.18"
   sqlparser:
     dependency: transitive
     description:
@@ -978,6 +994,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.25"
+  synchronized:
+    dependency: transitive
+    description:
+      name: synchronized
+      sha256: "5fcbd27688af6082f5abd611af56ee575342c30e87541d0245f7ff99faa02c60"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0"
   term_glyph:
     dependency: transitive
     description:

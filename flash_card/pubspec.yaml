@@ -28,10 +28,9 @@ dependencies:
   carousel_slider:
   page_flip:
   supabase_flutter: ^1.2.2
-  drift:
+  sqflite:
+  sqflite_common_ffi:
   path:
-  path_provider:
-  sqlite3_flutter_libs:
 
 dev_dependencies:
   flutter_test:
@@ -39,8 +38,8 @@ dev_dependencies:
   freezed:
   riverpod_generator:
   flutter_lints: ^2.0.0
-  drift_dev:
-  build_runner:
+  drift_dev: ^2.7.0
+  build_runner: ^2.3.3
 
 flutter:
   uses-material-design: true

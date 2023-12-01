@@ -1,3 +1,4 @@
+import 'package:flash_card/infrastructure/database/sqflite_db.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flash_card/presentation/provider/provider_common.dart';
@@ -60,7 +61,6 @@ class ColorfulCheckMarks extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final database = ref.watch(myCardDatabaseProvider);
     int databaseTypeValue = 0;
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -78,21 +78,21 @@ class ColorfulCheckMarks extends ConsumerWidget {
                 ref.read(memorizedTypeProviderFamily(idKey).notifier).state =
                     null;
                 debugPrint('null');
-                // await database.updateDatabaseCard(idKey, 0);
+                await updateMemorizedType(idKey, 0);
                 databaseTypeValue = 0;
               } else {
                 ref.read(memorizedTypeProviderFamily(idKey).notifier).state =
                     type;
                 if (type == MemorizedType.red) {
-                  // await database.updateDatabaseCard(idKey, 1);
+                  await updateMemorizedType(idKey, 1);
                   debugPrint('red');
                   databaseTypeValue = 1;
                 } else if (type == MemorizedType.yellow) {
-                  // await database.updateDatabaseCard(idKey, 2);
+                  await updateMemorizedType(idKey, 2);
                   debugPrint('yellow');
                   databaseTypeValue = 2;
                 } else if (type == MemorizedType.blue) {
-                  // await database.updateDatabaseCard(idKey, 3);
+                  await updateMemorizedType(idKey, 3);
                   debugPrint('blue');
                   databaseTypeValue = 3;
                 }

@@ -1,4 +1,6 @@
 import 'package:flash_card/domain/models/word.dart';
+import 'package:flash_card/infrastructure/database/database_books.dart';
+import 'package:flash_card/infrastructure/database/sqflite_db.dart';
 import 'package:flash_card/presentation/widgets/common/alert_dialog/single_button_dialog.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
@@ -14,7 +16,6 @@ class NewInput extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final database = ref.watch(myCardDatabaseProvider);
     final responseState = ref.watch(responseProvider);
     List<String> response = responseState?.split(';') ?? <String>[];
     final inputWord = ref.watch(inputWordProvider);
@@ -78,17 +79,17 @@ class NewInput extends HookConsumerWidget {
               '3Effect triggered with waitingGpt: $waitingGpt, responseState: $responseState');
           debugPrint(inputWord);
           debugPrint(response.toString());
-          // final result = await database.addDatabaseCard(
-          //     inputWord,
-          //     response[0],
-          //     response[1],
-          //     response[2],
-          //     response[3],
-          //     response[4],
-          //     response[5],
-          //     response[6],
-          //     response[7],
-          //     0);
+          final result = await insertDb(
+              inputWord,
+              response[0],
+              response[1],
+              response[2],
+              response[3],
+              response[4],
+              response[5],
+              response[6],
+              response[7],
+              0);
           // if (!supabaseExisted) {
           //   await Supabase.instance.client
           //       .from('word_list')
@@ -106,8 +107,7 @@ class NewInput extends HookConsumerWidget {
           //   ref.read(supabaseExistedProvider.notifier).state = true;
           // }
           final word = Word(
-            // id: result,
-            id: 0,
+            id: result,
             word: inputWord,
             meaning: response[0],
             partOfSpeech: response[1],

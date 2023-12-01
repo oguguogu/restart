@@ -1,3 +1,4 @@
+import 'package:flash_card/infrastructure/database/sqflite_db.dart';
 import 'package:flash_card/presentation/widgets/common/alert_dialog/horizon_buttons_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_card/presentation/theme/sizes.dart';
@@ -21,7 +22,6 @@ class CardContent extends ConsumerWidget {
     WidgetRef ref,
   ) {
     final memorizedType = ref.watch(memorizedTypeProviderFamily(idKey));
-    // final deleteDBCard = ref.watch(deleteCardProvider);
     final carouselController = ref.watch(jumpCarouselControllerProvider);
     final sliderValue = ref.watch(sliderValueProvider);
 
@@ -79,7 +79,7 @@ class CardContent extends ConsumerWidget {
                 ref.read(wordListsProvider.notifier).update((state) {
                   return state.where((item) => item.id != idKey).toList();
                 });
-                // deleteDBCard(idKey);
+                deleteDbCard(idKey);
                 debugPrint('delete $idKey');
               }
             },
