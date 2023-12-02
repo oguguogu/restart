@@ -6,11 +6,10 @@ import 'package:flash_card/domain/models/word.dart';
 import 'package:flash_card/presentation/widgets/in_flashcard/cards/flip_card.dart';
 import 'package:flash_card/presentation/widgets/in_flashcard/cards/new_input.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flash_card/infrastructure/database/database_books.dart';
 
-final myCardDatabaseProvider = Provider<MyBookDatabase>((ref) {
-  return MyBookDatabase();
-});
+// final myCardDatabaseProvider = Provider<MyBookDatabase>((ref) {
+//   return MyBookDatabase();
+// });
 
 //carouselのcontrollerをファイルを超えて扱うためにproviderを使う
 final jumpCarouselControllerProvider =

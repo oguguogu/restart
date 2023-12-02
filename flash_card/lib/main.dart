@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:device_preview/device_preview.dart';
 import 'package:flash_card/infrastructure/database/sqflite_db.dart';
 import 'package:flutter/foundation.dart';
@@ -9,8 +10,9 @@ import 'package:flash_card/secret.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() async {
+  // 以下の部分をコメントアウトすると、理想の挙動をします。
+  // DartPluginRegistrant.ensureInitialized();
   // WidgetsFlutterBinding.ensureInitialized();
-
   // await Supabase.initialize(
   //   url: supabaseURL,
   //   anonKey: supabaseAnonKey,
